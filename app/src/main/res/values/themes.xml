@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MusicGuru" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+     <!--   <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>-->
+
+        <!-- Customize primary colors -->
+        <item name="colorPrimary">@color/red</item> <!-- App Bar / Toolbar -->
+        <item name="colorPrimaryContainer">@color/white</item> <!-- Background for containers -->
+        <item name="colorOnPrimary">@color/black</item> <!-- Toolbar Text & Icons -->
+
+        <!-- Status Bar (App Bar at the top) -->
+        <item name="android:statusBarColor">@color/red</item>
+
+        <!-- Action Bar Background -->
+        <item name="android:actionBarStyle">@style/MyActionBarStyle</item>
+    </style>
+
+    <!-- Custom Action Bar Style -->
+    <style name="MyActionBarStyle" parent="Widget.Material3.ActionBar.Solid">
+        <item name="background">@color/red</item> <!-- Change Action Bar color -->
+        <item name="titleTextColor">@color/white</item> <!-- Action Bar title color -->
+    </style>
+</resources>

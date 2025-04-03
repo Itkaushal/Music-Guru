@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- App name text and api key -->
+    <string name="app_name">Music Guru</string>
+    <string name="youtube_api_key">"AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"</string>
+    <string name="quet_text">🎸 Entertainments with Music Guru 🎶</string>
+
+    <!-- Button Text Name in to Profile Fragment -->
+    <string name="owner_name_text">Developed by :- erkaushalprajapati</string>
+    <string name="history_text">Search History</string>
+    <string name="account_text">Account Credential</string>
+    <string name="about_text">About Us</string>
+    <string name="logout_text">Log Out</string>
+    <string name="app_version_text">App Version 1.0.0</string>
+
+    <!-- Bottom nav item text name -->
+    <string name="home_text">Home</string>
+    <string name="short_text">Shorts</string>
+    <string name="profile_text">More</string>
+
+    <!-- Tab Layout Item Text Name -->
+    <string name="all_text">All</string>
+    <string name="trend_text">Trends</string>
+    <string name="movie_text">Movies</string>
+    <string name="news_text">News</string>
+    <string name="tech_text">Tech</string>
+
+</resources>

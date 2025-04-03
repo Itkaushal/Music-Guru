@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/shapecardgradient"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.ActivitisFragment">
+
+
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:orientation="vertical"
+         android:background="@drawable/register_layout_topbackround"
+         android:layout_height="70dp">
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textSize="22sp"
+             android:textStyle="bold"
+             android:padding="10dp"
+             android:letterSpacing="0.1"
+             android:layout_marginStart="10dp"
+             android:text="Music Guru"
+             android:textColor="@color/white"
+             android:layout_gravity="center_vertical"
+             android:gravity="bottom"/>
+     </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/imageViewUser"
+            android:background="@drawable/fire_icon"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/history_text"
+            app:iconTint="@color/white"
+            app:icon="@drawable/history_icon"
+            android:backgroundTint="@color/red"
+            android:letterSpacing="0.1"
+            app:iconPadding="20dp"
+            android:id="@+id/btn_SearchHistory"
+            app:iconSize="30dp"
+            android:textAllCaps="false"
+            android:gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            app:cornerRadius="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:iconSize="30dp"
+                android:includeFontPadding="true"
+                android:id="@+id/btn_accountDetails"
+                android:layout_margin="5dp"
+                android:text="@string/account_text"
+                android:letterSpacing="0.1"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                app:icon="@drawable/account_icon"
+                app:iconTint="@color/white"
+                android:textSize="16sp"
+                android:backgroundTint="@color/red"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:cornerRadius="10dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Kaushal"
+                android:id="@+id/tv_userInfo"
+                android:letterSpacing="0.1"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/red"
+                android:textStyle="bold"
+                android:background="@drawable/shape_button_tv"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/logout_text"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:letterSpacing="0.1"
+            android:textAllCaps="false"
+            android:id="@+id/btn_logOut"
+            app:iconSize="30dp"
+            app:icon="@drawable/logout_icon"
+            app:iconTint="@color/white"
+            android:backgroundTint="@color/red"
+            app:iconPadding="20dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            app:cornerRadius="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/about_text"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:letterSpacing="0.1"
+            android:id="@+id/btn_aboutUs"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:iconSize="30dp"
+            android:backgroundTint="@color/red"
+            android:gravity="center_vertical"
+            app:iconPadding="20dp"
+            app:iconTint="@color/white"
+            app:icon="@drawable/about_icon"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            app:cornerRadius="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:text="@string/app_version_text"
+            app:icon="@drawable/appversion"
+            android:id="@+id/btnAppVersion"
+            android:letterSpacing="0.1"
+            app:iconPadding="20dp"
+            android:backgroundTint="@color/red"
+            android:textAllCaps="false"
+            app:iconSize="30dp"
+            app:iconTint="@color/white"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/white"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            app:cornerRadius="10dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/owner_name_text"
+            android:textSize="12sp"
+            android:letterSpacing="0.2"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:emojiCompatEnabled="true"
+            android:textStyle="bold"
+            android:drawablePadding="10dp"
+            android:gravity="center"/>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:background="@drawable/madeinindia"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitCenter"/>
+
+    </LinearLayout>
+</LinearLayout>

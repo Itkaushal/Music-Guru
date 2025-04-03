@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners
+        android:bottomLeftRadius="20dp"
+        android:bottomRightRadius="20dp"/>
+
+    <gradient
+        android:startColor="@color/white"
+        android:centerColor="@color/red"
+        android:endColor="@color/red"
+        android:gradientRadius="@dimen/mediarouter_chooser_list_item_padding_bottom"
+        android:centerY="@integer/material_motion_duration_short_1"
+        android:angle="270"
+    android:centerX="@integer/material_motion_duration_short_1"/>
+
+</shape>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shapecardgradient"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.auth.RegisterFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/register_layout_topbackround"
+        android:layout_height="70dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:letterSpacing="0.1"
+            android:layout_marginStart="10dp"
+            android:text="SignUp Process"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:gravity="bottom"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:elevation="10dp"
+            android:weightSum="2"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:gravity="end"
+                android:layout_marginEnd="5dp"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="Entertain With"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Music Guru"
+                android:textSize="22sp"
+                android:textColor="@color/red"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:textSize="24sp"
+            android:layout_height="wrap_content"
+            android:text="Let's Get Started!"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"/>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="30dp"
+            android:layout_margin="1dp"
+            app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeColor="@color/red"
+                    app:boxStrokeErrorColor="@color/black"
+                    app:errorTextColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:cursorColor="@color/black"
+                    app:cursorErrorColor="@color/red"
+                    android:layout_marginTop="20dp"
+                    app:expandedHintEnabled="true"
+                    android:textColorHint="@color/gray"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:errorEnabled="true"
+                    android:elevation="10dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Your Name"
+                        android:drawableStart="@drawable/user_icon_input"
+                        android:inputType="textPersonName"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/red"
+                        android:maxLength="12"
+                        android:textColorHint="@color/black"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- email text layout and textview -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeColor="@color/red"
+                    app:boxStrokeErrorColor="@color/black"
+                    app:errorTextColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:cursorColor="@color/black"
+                    app:cursorErrorColor="@color/red"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:expandedHintEnabled="true"
+                    android:textColorHint="@color/gray"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:errorEnabled="true"
+                    android:elevation="10dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_userEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableTint="@color/red"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/mail_icon_input"
+                        android:hint="Enter Your Email"
+                        android:inputType="textEmailAddress"
+                        android:textColorHint="@color/black"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Gender textlayout and textview -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeColor="@color/red"
+                    app:boxStrokeErrorColor="@color/black"
+                    app:errorTextColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:cursorColor="@color/black"
+                    app:cursorErrorColor="@color/red"
+                    app:boxStrokeWidthFocused="2dp"
+                    android:textColorHint="@color/gray"
+                    app:expandedHintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:errorEnabled="true"
+                    android:elevation="10dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_userGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Your Gender"
+                        android:drawableStart="@drawable/gender_icon_input"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/red"
+                        android:inputType="text"
+                        android:maxLength="6"
+                        android:textColorHint="@color/black"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Age text layout and text view -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/red"
+                    app:boxStrokeErrorColor="@color/black"
+                    app:errorTextColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:cursorColor="@color/black"
+                    app:cursorErrorColor="@color/red"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:expandedHintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/gray"
+                    android:elevation="10dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_userAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableTint="@color/red"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/age_icon_input"
+                        android:hint="Enter Your Age"
+                        android:inputType="number"
+                        android:textColorHint="@color/black"
+                        android:textAllCaps="false"
+                        android:maxLength="100"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeColor="@color/red"
+                    app:boxStrokeErrorColor="@color/black"
+                    app:errorTextColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:cursorColor="@color/black"
+                    app:cursorErrorColor="@color/red"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:expandedHintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    android:textColorHint="@color/gray"
+                    app:errorEnabled="true"
+                    android:elevation="10dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_userPassword"
+                        android:layout_width="match_parent"
+                        android:drawableStart="@drawable/password_icon"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/red"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Password"
+                        android:inputType="textWebPassword"
+                        android:maxLength="10"
+                        android:textColorHint="@color/black"
+                        android:password="false"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:textStyle="bold"
+                    android:text="Login👈 "
+                    android:letterSpacing="0.1"
+                    android:textSize="12sp"
+                    android:id="@+id/tv_goLogin"
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="20dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:id="@+id/btn_Register"
+                    android:textStyle="normal"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:text="Register"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/red"
+                    app:cornerRadius="30dp"
+                    app:rippleColor="@color/white"
+                    app:elevation="10dp"
+                    app:strokeColor="@color/black"
+                    app:strokeWidth="1dp"
+                    android:textAllCaps="false"/>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
