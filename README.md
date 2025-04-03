@@ -123,10 +123,13 @@ and news features, all wrapped in a sleek, user-friendly interface built with Ma
 
 ![WhatsApp Image 2025-04-03 at 3 30 17 PM (1)](https://github.com/user-attachments/assets/908ec93a-ac35-4207-9050-84bd6293ee30)
 
+![WhatsApp Image 2025-04-03 at 3 30 16 PM](https://github.com/user-attachments/assets/fb723337-255c-49ec-9538-59a8b5f41e0f)
+
 ![WhatsApp Image 2025-04-03 at 3 30 18 PM](https://github.com/user-attachments/assets/7589500c-5d38-46b6-8563-4246a0ccea23)
 
 ![WhatsApp Image 2025-04-03 at 3 30 18 PM (1)](https://github.com/user-attachments/assets/024f6b64-6a47-4c36-8e6d-4d693b32441f)
 
+![WhatsApp Image 2025-04-03 at 3 30 17 PM (2)](https://github.com/user-attachments/assets/2ed1e3b1-5c6b-4afb-b37b-30c715899bda)
 
 ---
 
