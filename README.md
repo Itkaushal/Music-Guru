@@ -115,7 +115,18 @@ and news features, all wrapped in a sleek, user-friendly interface built with Ma
 
 ## 📱 Screenshots & Demo
 
-(Include sample images and videos of your app in action here)
+![WhatsApp Image 2025-04-03 at 3 30 16 PM (1)](https://github.com/user-attachments/assets/c551bd33-3a64-4482-8c12-fa0dc2d11cdd)
+
+![WhatsApp Image 2025-04-03 at 3 30 17 PM](https://github.com/user-attachments/assets/21f1651a-bdbd-45e9-a6c4-205bd8d3f4d0)
+
+![WhatsApp Image 2025-04-03 at 3 30 16 PM](https://github.com/user-attachments/assets/b95a78c9-8d09-4001-b8c8-9b57d1be229b)
+
+![WhatsApp Image 2025-04-03 at 3 30 17 PM (1)](https://github.com/user-attachments/assets/908ec93a-ac35-4207-9050-84bd6293ee30)
+
+![WhatsApp Image 2025-04-03 at 3 30 18 PM](https://github.com/user-attachments/assets/7589500c-5d38-46b6-8563-4246a0ccea23)
+
+![WhatsApp Image 2025-04-03 at 3 30 18 PM (1)](https://github.com/user-attachments/assets/024f6b64-6a47-4c36-8e6d-4d693b32441f)
+
 
 ---
 
