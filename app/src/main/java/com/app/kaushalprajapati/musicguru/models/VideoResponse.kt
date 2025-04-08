@@ -36,7 +36,6 @@ data class VideoStatistics(
 
 data class ContentDetails(val duration: String)
 
-// Add these to your existing models
 
 data class SearchResponse(
     val items: List<SearchItem>

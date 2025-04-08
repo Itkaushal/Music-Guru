@@ -27,24 +27,19 @@ class VideoAdapter : ListAdapter<VideoItem, VideoAdapter.ViewHolder>(DIFF_CALLBA
             tvViews.text = formatViews(item.statistics.viewCount ?:" No View Found")
             tvDuration.text = formatDuration(item.contentDetails.duration)
 
-            // Load thumbnail using Glide
             Glide.with(holder.itemView.context)
                 .load(item.snippet.thumbnails.high.url)
-                .placeholder(R.drawable.error_thumbnail)
-                .error("https://cdn.iconscout.com/icon/free/png-512/free-error-icon-download-in-svg-png-gif-file-formats--page-not-found-bug-maintenance-customer-support-pack-people-icons-414985.png?f=webp&w=256")
                 .into(ivThumbnail)
 
-            // Handle click event to open VideoPlayerActivity
+            //click event to open VideoPlayerActivity
             root.setOnClickListener {
                 val context = holder.itemView.context
                 val intent = Intent(context, VideoPlayerActivity::class.java).apply {
-                    putExtra("VIDEO_ID", item.id) // Pass video ID
+                    putExtra("VIDEO_ID", item.id)
                 }
                 context.startActivity(intent)
             }
 
-            // Handle channel name click to open channel page
-            tvChannel.setOnClickListener { onChannelClick?.invoke(item.snippet.channelId) }
         }
     }
 
@@ -83,6 +78,4 @@ class VideoAdapter : ListAdapter<VideoItem, VideoAdapter.ViewHolder>(DIFF_CALLBA
             } ?: "00:00"
         }
     }
-
-    var onChannelClick: ((String) -> Unit)? = null
 }

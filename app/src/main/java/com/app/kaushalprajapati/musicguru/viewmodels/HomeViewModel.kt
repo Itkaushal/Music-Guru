@@ -37,7 +37,7 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
     private val _shortVideos = MutableLiveData<Resource<List<VideoItem>>>()
     val shortVideos : LiveData<Resource<List<VideoItem>>> = _shortVideos
 
-    // function of ,load initial  data
+    /*// function of load initial  data
         fun loadInitialData() {
             viewModelScope.launch {
                 _videos.postValue(Resource.Loading())
@@ -55,10 +55,9 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
                     _videos.postValue(Resource.Error(e.message ?: "Unknown error"))
                 }
             }
-        }
+        }*/
 
     // function of search videos
-
     fun searchVideos(query: String) {
         viewModelScope.launch {
             _videos.postValue(Resource.Loading())
@@ -80,7 +79,6 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
     }
 
     // function of search item video
-
     fun SearchItem.toVideoItem(): VideoItem {
         return VideoItem(
             id = this.id.videoId,
@@ -100,8 +98,7 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
         )
     }
 
-    // function of movie video fetching
-
+    // function of fetching movies
     fun fetchMovies(){
         viewModelScope.launch {
             _movie.postValue(Resource.Loading())
@@ -118,8 +115,7 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
         }
     }
 
-    // function of news video fetching
-
+    // function of fetching news videos
     fun fetchNews(){
         viewModelScope.launch {
             _news.postValue(Resource.Loading())
@@ -136,8 +132,7 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
         }
     }
 
-    // function of tech video fetching
-
+    // function of fetching Tech Videos
     fun fetchTechVideos(){
         viewModelScope.launch {
             _techVideos.postValue(Resource.Loading())
@@ -154,8 +149,7 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
         }
     }
 
-    // function of trending video fetching
-
+    // function of fetching Trending Videos
     fun loadTrendingVideos() {
         viewModelScope.launch {
             _trendingVideos.postValue(Resource.Loading())
@@ -173,8 +167,7 @@ class HomeViewModel(private val repository: VideoRepository) : ViewModel() {
         }
     }
 
-    // function of all video fetching
-
+    // function of all type  video fetching
     fun loadAllVideos(){
         viewModelScope.launch {
             _allVideos.postValue(Resource.Loading())

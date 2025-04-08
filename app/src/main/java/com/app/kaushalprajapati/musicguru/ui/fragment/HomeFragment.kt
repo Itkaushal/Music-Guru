@@ -57,7 +57,6 @@ class HomeFragment : Fragment() {
 			tabLayout.addTab(tabItem)
 			tabItem.view.setBackgroundResource(R.drawable.tab_background)
 
-			// Set custom margin between tabs
 			val params = tabItem.view.layoutParams as LinearLayout.LayoutParams
 			params.leftMargin = 10
 			params.rightMargin = 10
@@ -70,20 +69,17 @@ class HomeFragment : Fragment() {
 				showLoading(true)
 				loadVideos(tab.text.toString())
 			}
-
 			override fun onTabUnselected(tab: TabLayout.Tab) {
 				tab.view.setBackgroundResource(R.drawable.tab_background)
 				showLoading(false)
 				videoAdapter.submitList(emptyList())
 			}
-
 			override fun onTabReselected(tab: TabLayout.Tab) {
 				tab.view.setBackgroundResource(R.drawable.tab_background2)
 				showLoading(true)
 				loadVideos(tab.text.toString())
 			}
 		})
-
 		tabLayout.elevation = 10.0f
 		tabLayout.getTabAt(0)?.select()
 	}
@@ -112,7 +108,6 @@ class HomeFragment : Fragment() {
 						showError("No data found")
 					}
 				}
-
 				is Resource.Error -> {
 					showLoading(false)
 					showError(resource.message)
@@ -128,17 +123,14 @@ class HomeFragment : Fragment() {
 			binding.swipeRefresh.isRefreshing = false
 		}
 	}
-
 	private fun getCurrentTabIndex() {
 		val selectedTab = tabLayout.getTabAt(tabLayout.selectedTabPosition)
 		val category = selectedTab?.text?.toString() ?: "All"
 		loadVideos(category)
 	}
-
 	private fun showLoading(loading: Boolean) {
 		binding.loadingIndicator.root.visibility = if (loading) View.VISIBLE else View.GONE
 	}
-
 	private fun showError(message: String?) {
 		Snackbar.make(binding.root, message ?: "An error occurred", Snackbar.LENGTH_LONG).show()
 	}
@@ -156,7 +148,6 @@ class HomeFragment : Fragment() {
 				}
 				return true
 			}
-
 			override fun onQueryTextChange(newText: String?): Boolean {
 				if (!newText.isNullOrEmpty()) {
 					Log.d("HomeFragment", "Search text changed: $newText")
@@ -172,10 +163,10 @@ class HomeFragment : Fragment() {
 			getCurrentTabIndex()
 			false
 		}
+
 		homeViewModel.videos.observe(viewLifecycleOwner, Observer {
 			when (it) {
 				is Resource.Loading -> showLoading(true)
-
 				is Resource.Success -> {
 					showLoading(false)
 					val videoList = it.data.orEmpty()
@@ -183,12 +174,10 @@ class HomeFragment : Fragment() {
 						videoAdapter.submitList(videoList)
 						Log.d("HomeFragment", "Received ${videoList.size} search results")
 					} else {
-						Toast.makeText(requireContext(), "No results found", Toast.LENGTH_SHORT)
-							.show()
+						Toast.makeText(requireContext(), "No results found", Toast.LENGTH_SHORT).show()
 						showError("No results found")
 					}
 				}
-
 				is Resource.Error -> {
 					showLoading(false)
 					showError(it.message)
@@ -202,17 +191,12 @@ class HomeFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		// Setup ViewModel
 		val repository = VideoRepository(NetworkClient.apiService)
-		homeViewModel =
-			ViewModelProvider(this, HomeViewModelFactory(repository))[HomeViewModel::class.java]
+		homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomeViewModel::class.java]
 		tabLayout = binding.tabLayout
 
 		if (prefsHelper.isLoggedIn(requireContext())) {
-
-			// Tab layout setup
 			setupTabs()
-			// RecyclerView setup
 			recyclerView = binding.rvVideos
 			videoAdapter = VideoAdapter()
 			recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -228,7 +212,7 @@ class HomeFragment : Fragment() {
 
 	fun saveSearchQuery(query: String) {
 		val historyKey = "search_history"
-		val maxHistorySize = 10 // Limit history to the last 10 searches
+		val maxHistorySize = 10
 		val searchHistory = sharedPreferences.getStringSet(historyKey, mutableSetOf()) ?: mutableSetOf()
 		searchHistory.add(query)
 		val updatedHistory = searchHistory.take(maxHistorySize).toMutableSet()

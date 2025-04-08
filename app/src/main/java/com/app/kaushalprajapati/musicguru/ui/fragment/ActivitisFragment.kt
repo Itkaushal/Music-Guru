@@ -207,7 +207,7 @@ class ActivitisFragment : Fragment() {
 
 	fun logOutUser(){
 		prefsHelper.setLoggedIn(requireContext(),false)
-		Toast.makeText(requireContext(), "LogOut Successfully!", Toast.LENGTH_SHORT).show()
+		Toast.makeText(requireContext(), "Log out Successfully!", Toast.LENGTH_SHORT).show()
 		(activity as MainActivity).loadFragment(LoginFragment())
 	}
 

@@ -19,7 +19,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomNavigationView: BottomNavigationView
 
@@ -29,10 +28,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
-
         bottomNavigationView = binding.bottomNavigation
 
-        // Check if user is logged in
         if (prefsHelper.isLoggedIn(this)) {
             val (savedName, _) = prefsHelper.getUser(this)
 
@@ -44,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             loadFragment(LoginFragment()) // Open Login if not logged in
         }
 
-
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> loadFragment(HomeFragment())
@@ -54,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     fun loadFragment(fragment: Fragment): Boolean {
         supportFragmentManager.beginTransaction()
@@ -68,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
         } else {
-            super.onBackPressed() // Default behavior (closes activity)
+            super.onBackPressed()
         }
     }
 }

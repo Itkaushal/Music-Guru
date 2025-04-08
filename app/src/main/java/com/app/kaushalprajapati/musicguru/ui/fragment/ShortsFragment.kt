@@ -31,25 +31,19 @@ class ShortsFragment : Fragment() {
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		binding = FragmentShortsBinding.inflate(inflater, container, false)
 
-		// Setup ViewModel
 		val repository = VideoRepository(NetworkClient.apiService)
 		homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomeViewModel::class.java]
 
-		// RecyclerView setup
 		videoAdapter = ShortAdapter()
 		binding.recyclerShort.layoutManager = LinearLayoutManager(requireContext())
 		binding.recyclerShort.adapter = videoAdapter
 
-
 		setupObserver()
-
 		return binding.root
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		// Fetch data when fragment is created
-
 		if (prefsHelper.isLoggedIn(requireContext())) {
 			homeViewModel.getShortVideoData()
 		} else{
@@ -58,7 +52,6 @@ class ShortsFragment : Fragment() {
 		}
 	}
 
-	// Observes video data changes
 	private fun setupObserver() {
 		homeViewModel.shortVideos.observe(viewLifecycleOwner) { resource ->
 			when (resource) {
@@ -66,9 +59,7 @@ class ShortsFragment : Fragment() {
 				is Resource.Success -> {
 					showLoading(false)
 					val videoList = resource.data.orEmpty()
-
 					Log.d("ShortsFragment", "Received ${videoList.size} videos")
-
 					if (videoList.isNotEmpty()) {
 						videoAdapter.submitList(videoList)
 					} else {
@@ -90,6 +81,6 @@ class ShortsFragment : Fragment() {
 	}
 
 	private fun showError(message: String?) {
-		Snackbar.make(binding.root, message ?: "An error occurred", Snackbar.LENGTH_LONG).show()
+		Snackbar.make(binding.root, message ?: "error occurred", Snackbar.LENGTH_LONG).show()
 	}
 }
