@@ -8,25 +8,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.ActivitisFragment">
 
-
-   <!-- <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/register_layout_topbackround"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:letterSpacing="0.1"
-            android:layout_marginStart="10dp"
-            android:text="Music Guru"
-            android:textColor="@color/white"
-            android:layout_gravity="center_vertical"
-            android:gravity="bottom"/>
-    </LinearLayout>-->
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -171,8 +155,144 @@
             android:layout_marginTop="10dp"
             app:cornerRadius="10dp"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:text="@string/share_apkText"
+            app:icon="@drawable/shareapk_icon"
+            android:id="@+id/btnShareApk"
+            android:letterSpacing="0.1"
+            app:iconPadding="20dp"
+            android:backgroundTint="@color/red"
+            android:textAllCaps="false"
+            app:iconSize="30dp"
+            app:iconTint="@color/white"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/white"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            app:cornerRadius="10dp"/>
+
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:text="Let's Connect with me-"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            app:rippleColor="@color/black"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="25dp"
+            app:state_dragged="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/instaButton"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/white"
+                        android:elevation="10dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/instagram_icon"/>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:text="Instagram"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:elevation="10dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/facebookButton"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:elevation="10dp"
+                        android:backgroundTint="@color/white"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/facebook_icon"/>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:text="Facebook"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:elevation="10dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/gitHubButton"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:elevation="10dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/white"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/github_icon"/>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="GitHub"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:elevation="10dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="@string/owner_name_text"
@@ -185,13 +305,36 @@
             android:drawablePadding="10dp"
             android:gravity="center"/>
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="90dp"
-            android:background="@drawable/madeinindia"
-            android:layout_gravity="center"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_marginTop="20dp"
-            android:scaleType="fitCenter"/>
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tiranga_icon"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:letterSpacing="0.1"
+                app:fontFamily="sans-serif-black"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Made In India"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

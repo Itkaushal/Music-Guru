@@ -11,6 +11,7 @@ import com.app.kaushalprajapati.musicguru.ui.activity.MainActivity
 import com.app.kaushalprajapati.musicguru.ui.fragment.HomeFragment
 import com.app.kaushalprajapati.musicguru.ui.utils.sharedprefrences.prefsHelper
 import android.util.Log  // Add this for debugging
+import com.app.kaushalprajapati.musicguru.ui.utils.notification.MyNotificationClass
 
 class LoginFragment : Fragment() {
 	private lateinit var binding: FragmentLoginBinding
@@ -62,6 +63,7 @@ class LoginFragment : Fragment() {
 					Toast.makeText(requireContext(), "Invalid credentials!", Toast.LENGTH_SHORT).show()
 				}
 			} else {
+				MyNotificationClass().showNotification(requireContext(),"Music Guru","Please Register First!")
 				Toast.makeText(requireContext(), "User not registered!", Toast.LENGTH_SHORT).show()
 			}
 		}

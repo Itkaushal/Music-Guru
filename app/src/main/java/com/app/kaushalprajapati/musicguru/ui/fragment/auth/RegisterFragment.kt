@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.app.kaushalprajapati.musicguru.databinding.FragmentRegisterBinding
 import com.app.kaushalprajapati.musicguru.ui.activity.MainActivity
+import com.app.kaushalprajapati.musicguru.ui.utils.notification.MyNotificationClass
 import com.app.kaushalprajapati.musicguru.ui.utils.sharedprefrences.prefsHelper
 
 class RegisterFragment : Fragment() {
@@ -63,6 +64,7 @@ class RegisterFragment : Fragment() {
 			}
 			else if (age.toInt() > 100) {
 				Toast.makeText(requireContext(), "Age must be less than 100", Toast.LENGTH_SHORT).show()
+				MyNotificationClass().showNotification(requireContext(),"Music Guru","Hello User I Think You need to pray God! not need to listen music😅")
 				return@setOnClickListener
 			}
 			else if (password.length < 6) {

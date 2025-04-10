@@ -12,6 +12,7 @@
     <string name="about_text">About Us</string>
     <string name="logout_text">Log Out</string>
     <string name="app_version_text">App Version 1.0.0</string>
+    <string name="share_apkText">Share Apk</string>
 
     <!-- Bottom nav item text name -->
     <string name="home_text">Home</string>
