@@ -1,6 +1,7 @@
 package com.app.kaushalprajapati.musicguru.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -16,14 +17,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.app.kaushalprajapati.musicguru.R
 import com.app.kaushalprajapati.musicguru.databinding.FragmentActivitisBinding
 import com.app.kaushalprajapati.musicguru.databinding.FragmentLoginBinding
 import com.app.kaushalprajapati.musicguru.ui.activity.MainActivity
 import com.app.kaushalprajapati.musicguru.ui.fragment.auth.LoginFragment
+import com.app.kaushalprajapati.musicguru.ui.utils.notification.MyNotificationClass
 import com.app.kaushalprajapati.musicguru.ui.utils.sharedprefrences.prefsHelper
 import com.bumptech.glide.Glide
+import java.io.File
 
 class ActivitisFragment : Fragment() {
 	private lateinit var binding: FragmentActivitisBinding
@@ -73,6 +77,62 @@ class ActivitisFragment : Fragment() {
 
 		fetchuserImageView()
 
+		binding.btnShareApk?.setOnClickListener {
+			shareApkwithFriends()
+		}
+
+		binding.instaButton?.setOnClickListener {
+			Toast.makeText(requireContext(), "redirecting to instagram...", Toast.LENGTH_SHORT)
+				.show()
+			openUrlinBrowser("https://www.instagram.com/erkaushalprajapati")
+		}
+
+		binding.facebookButton?.setOnClickListener {
+			Toast.makeText(requireContext(), "redirecting to facebook...", Toast.LENGTH_SHORT)
+				.show()
+			openUrlinBrowser("https://www.facebook.com/इंजी कौशल प्रजापति मझिगवां ")
+		}
+
+		binding.gitHubButton?.setOnClickListener {
+			Toast.makeText(requireContext(), "redirecting to Github Profile...", Toast.LENGTH_SHORT)
+				.show()
+			openUrlinBrowser("https://github.com/Itkaushal")
+		}
+
+	}
+
+	private fun openUrlinBrowser(url: String) {
+		try {
+			val intent = Intent(Intent.ACTION_VIEW).apply {
+				data = android.net.Uri.parse(url)
+			}
+			startActivity(intent)
+		} catch (e: Exception) {
+			Toast.makeText(requireContext(), "Unable to open link: ${e.message}", Toast.LENGTH_SHORT).show()
+		}
+	}
+
+	private fun shareApkwithFriends() {
+		try {
+			val apkInfo = requireContext().applicationContext.applicationInfo
+			val apkFile = File(apkInfo.sourceDir)
+
+			val apkUri = FileProvider.getUriForFile(
+				requireContext(),
+				"${requireContext().packageName}.provider", // defined in Manifest
+				apkFile
+			)
+
+			val shareIntent = Intent(Intent.ACTION_SEND).apply {
+				type = "application/vnd.android.package-archive"
+				putExtra(Intent.EXTRA_STREAM, apkUri)
+				addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+			}
+
+			startActivity(Intent.createChooser(shareIntent, "Share APK via"))
+		} catch (e : Exception){
+			Toast.makeText(requireContext(), "Apk share failed!:- ${e.message.toString()}", Toast.LENGTH_SHORT).show()
+		}
 	}
 
 	private fun fetchUserDetails() {
@@ -175,6 +235,7 @@ class ActivitisFragment : Fragment() {
 	private fun clearSearchHistory() {
 		val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("MusicGuruPrefs", 0)
 		sharedPreferences.edit().remove("search_history").apply()
+		MyNotificationClass().showNotification(requireContext(),"Music Guru","Your Search History cleared successfully...")
 		Toast.makeText(requireContext(), "Search history cleared!", Toast.LENGTH_SHORT).show()
 
 	}
@@ -207,8 +268,10 @@ class ActivitisFragment : Fragment() {
 
 	fun logOutUser(){
 		prefsHelper.setLoggedIn(requireContext(),false)
+		MyNotificationClass().showNotification(requireContext(),"Music Guru","Oh..You Have Logged Out? Please Login to continue...")
 		Toast.makeText(requireContext(), "Log out Successfully!", Toast.LENGTH_SHORT).show()
 		(activity as MainActivity).loadFragment(LoginFragment())
 	}
+
 
 }
