@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="5dp"
-    android:gravity="center"
-    android:layout_gravity="center"
-    android:layout_width="wrap_content">
+    android:layout_height="match_parent"
+    android:id="@+id/root">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:background="@drawable/ic_launcher_foreground"
-                android:id="@+id/ivThumbnail"
-                android:contentDescription="TODO" />
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/youtubePlayerView"
+        android:background="#000000"/>
 
-</LinearLayout>
+</FrameLayout>
+
+
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/ic_launcher_foreground"
+                    android:id="@+id/ivThumbnail"
+                    android:contentDescription="TODO" />
+
+    </LinearLayout>-->

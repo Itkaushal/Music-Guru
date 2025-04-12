@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import com.app.kaushalprajapati.musicguru.R
 import com.app.kaushalprajapati.musicguru.api.network.NetworkClient
 import com.app.kaushalprajapati.musicguru.databinding.FragmentShortsBinding
 import com.app.kaushalprajapati.musicguru.repository.VideoRepository
@@ -21,6 +23,9 @@ import com.app.kaushalprajapati.musicguru.viewmodels.HomeViewModel
 import com.app.kaushalprajapati.musicguru.viewmodels.HomeViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.exoplayer2.util.Log
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class ShortsFragment : Fragment() {
 
@@ -28,7 +33,7 @@ class ShortsFragment : Fragment() {
 	private lateinit var videoAdapter: ShortAdapter
 	private lateinit var homeViewModel: HomeViewModel
 
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+	/*override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		binding = FragmentShortsBinding.inflate(inflater, container, false)
 
 		val repository = VideoRepository(NetworkClient.apiService)
@@ -37,6 +42,25 @@ class ShortsFragment : Fragment() {
 		videoAdapter = ShortAdapter()
 		binding.recyclerShort.layoutManager = LinearLayoutManager(requireContext())
 		binding.recyclerShort.adapter = videoAdapter
+
+		setupObserver()
+		return binding.root
+	}*/
+
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+		binding = FragmentShortsBinding.inflate(inflater, container, false)
+
+		val repository = VideoRepository(NetworkClient.apiService)
+		homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomeViewModel::class.java]
+
+		videoAdapter = ShortAdapter(binding.recyclerShort)
+		val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+		binding.recyclerShort.layoutManager = layoutManager
+		binding.recyclerShort.adapter = videoAdapter
+
+		// Snap each video like Reels or Shorts
+		val snapHelper = PagerSnapHelper()
+		snapHelper.attachToRecyclerView(binding.recyclerShort)
 
 		setupObserver()
 		return binding.root
@@ -84,3 +108,5 @@ class ShortsFragment : Fragment() {
 		Snackbar.make(binding.root, message ?: "error occurred", Snackbar.LENGTH_LONG).show()
 	}
 }
+
+

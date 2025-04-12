@@ -8,11 +8,12 @@
     tools:context=".ui.fragment.ShortsFragment">
 
         <!-- RecyclerView for Videos -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_short"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_short" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_short"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_short" />
 
         <!-- Loading Indicator -->
         <include

@@ -11,7 +11,11 @@ import com.app.kaushalprajapati.musicguru.ui.activity.ShortPlayerActivity
 import com.app.kaushalprajapati.musicguru.databinding.ItemShortBinding
 import com.app.kaushalprajapati.musicguru.models.VideoItem
 import com.bumptech.glide.Glide
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
+/*
 class ShortAdapter : ListAdapter<VideoItem, ShortAdapter.ViewHolder>(DIFF_CALLBACK) {
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -47,3 +51,65 @@ class ShortAdapter : ListAdapter<VideoItem, ShortAdapter.ViewHolder>(DIFF_CALLBA
 	}
 
 }
+*/
+
+
+class ShortAdapter(
+	private val recyclerView: RecyclerView
+) : ListAdapter<VideoItem, ShortAdapter.ViewHolder>(DIFF_CALLBACK) {
+
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+		val binding = ItemShortBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+		return ViewHolder(binding)
+	}
+
+	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+		val item = getItem(position)
+
+		holder.binding.youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+			override fun onReady(youTubePlayer: YouTubePlayer) {
+				holder.youTubePlayer = youTubePlayer
+				youTubePlayer.loadVideo(item.id, 0f) // load instead of cue for autoplay
+			}
+
+			override fun onStateChange(
+				youTubePlayer: YouTubePlayer,
+				state: PlayerConstants.PlayerState
+			) {
+				if (state == PlayerConstants.PlayerState.ENDED) {
+					val nextPosition = holder.adapterPosition + 1
+					if (nextPosition < itemCount) {
+						recyclerView.post {
+							recyclerView.smoothScrollToPosition(nextPosition)
+						}
+					}
+				}
+			}
+		})
+	}
+
+	override fun onViewAttachedToWindow(holder: ViewHolder) {
+		super.onViewAttachedToWindow(holder)
+		holder.youTubePlayer?.play()
+	}
+
+	override fun onViewDetachedFromWindow(holder: ViewHolder) {
+		super.onViewDetachedFromWindow(holder)
+		holder.youTubePlayer?.pause()
+	}
+
+	class ViewHolder(val binding: ItemShortBinding) : RecyclerView.ViewHolder(binding.root) {
+		var youTubePlayer: YouTubePlayer? = null
+	}
+
+	companion object {
+		val DIFF_CALLBACK = object : DiffUtil.ItemCallback<VideoItem>() {
+			override fun areItemsTheSame(oldItem: VideoItem, newItem: VideoItem) = oldItem.id == newItem.id
+			override fun areContentsTheSame(oldItem: VideoItem, newItem: VideoItem) = oldItem == newItem
+		}
+	}
+}
+
+
+
+
