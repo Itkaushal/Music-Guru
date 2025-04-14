@@ -1,8 +1,18 @@
 package com.app.kaushalprajapati.musicguru.ui.adapter
 
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore.Video
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,8 +21,13 @@ import com.app.kaushalprajapati.musicguru.databinding.ItemVideoBinding
 import com.app.kaushalprajapati.musicguru.models.VideoItem
 import com.app.kaushalprajapati.musicguru.ui.activity.VideoPlayerActivity
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class VideoAdapter : ListAdapter<VideoItem, VideoAdapter.ViewHolder>(DIFF_CALLBACK) {
+class VideoAdapter(
+) : ListAdapter<VideoItem, VideoAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemVideoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -42,6 +57,7 @@ class VideoAdapter : ListAdapter<VideoItem, VideoAdapter.ViewHolder>(DIFF_CALLBA
 
         }
     }
+
 
     class ViewHolder(val binding: ItemVideoBinding) : RecyclerView.ViewHolder(binding.root)
 

@@ -1,12 +1,13 @@
 <resources>
 
     <!-- App name text and api key -->
-    <string name="app_name">Media Player</string>
+    <string name="app_name">Music Guru</string>
     <string name="youtube_api_key">"AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"</string>
-    <string name="quet_text">🎸 Entertainment with Media Player 🎶</string>
+    <string name="quet_text">🎸 Entertainment with Music Guru 🎶</string>
 
     <!-- Button Text Name in to Profile Fragment -->
     <string name="owner_name_text">Developed by :- erkaushalprajapati</string>
+    <string name="more_options">More Options</string>
     <string name="history_text">Search History</string>
     <string name="account_text">Account Credential</string>
     <string name="about_text">About Us</string>

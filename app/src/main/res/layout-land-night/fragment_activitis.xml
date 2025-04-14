@@ -17,9 +17,10 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
+
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:id="@+id/imageViewUser"
                 android:background="@drawable/fire_icon"
                 android:layout_gravity="center"
@@ -27,21 +28,46 @@
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="@string/more_options"
+                app:iconTint="@color/red"
+                app:icon="@drawable/category"
+                android:backgroundTint="@color/white"
+                android:letterSpacing="0.1"
+                app:iconPadding="10dp"
+                app:rippleColor="@color/white"
+                app:elevation="10dp"
+                android:id="@+id/moreOptions_btn"
+                app:iconSize="50dp"
+                android:textAllCaps="false"
+                android:gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                app:cornerRadius="15dp"/>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="@string/history_text"
-                app:iconTint="@color/white"
-                app:icon="@drawable/history_icon"
-                android:backgroundTint="@color/red"
+                app:iconTint="@color/red"
+                app:icon="@drawable/search_icon"
+                android:backgroundTint="@color/white"
                 android:letterSpacing="0.1"
                 app:iconPadding="20dp"
                 android:id="@+id/btn_SearchHistory"
-                app:iconSize="30dp"
+                app:iconSize="25dp"
                 android:textAllCaps="false"
                 android:gravity="center_vertical"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:textSize="18sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
                 app:cornerRadius="10dp"/>
@@ -69,10 +95,10 @@
                     android:textAllCaps="false"
                     android:layout_gravity="center"
                     app:icon="@drawable/account_icon"
-                    app:iconTint="@color/white"
+                    app:iconTint="@color/red"
                     android:textSize="16sp"
-                    android:backgroundTint="@color/red"
-                    android:textColor="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     android:gravity="center"
                     app:cornerRadius="10dp"/>
@@ -84,13 +110,12 @@
                     android:id="@+id/tv_userInfo"
                     android:letterSpacing="0.1"
                     android:layout_margin="5dp"
-                    android:backgroundTint="@color/red"
-                    android:textStyle="bold"
+                    android:backgroundTint="@color/white"
                     android:background="@drawable/shape_button_tv"
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textSize="18sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="1"/>
 
             </LinearLayout>
@@ -100,14 +125,14 @@
                 android:layout_height="60dp"
                 android:text="@string/logout_text"
                 android:textSize="18sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:letterSpacing="0.1"
                 android:textAllCaps="false"
                 android:id="@+id/btn_logOut"
                 app:iconSize="30dp"
                 app:icon="@drawable/logout_icon"
-                app:iconTint="@color/white"
-                android:backgroundTint="@color/red"
+                app:iconTint="@color/red"
+                android:backgroundTint="@color/white"
                 app:iconPadding="20dp"
                 android:gravity="center_vertical"
                 android:layout_marginStart="15dp"
@@ -124,12 +149,12 @@
                 android:letterSpacing="0.1"
                 android:id="@+id/btn_aboutUs"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 app:iconSize="30dp"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/white"
                 android:gravity="center_vertical"
                 app:iconPadding="20dp"
-                app:iconTint="@color/white"
+                app:iconTint="@color/red"
                 app:icon="@drawable/about_icon"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
@@ -145,12 +170,12 @@
                 android:id="@+id/btnAppVersion"
                 android:letterSpacing="0.1"
                 app:iconPadding="20dp"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/white"
                 android:textAllCaps="false"
                 app:iconSize="30dp"
-                app:iconTint="@color/white"
+                app:iconTint="@color/red"
                 android:layout_marginStart="15dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="10dp"
                 app:cornerRadius="10dp"/>
@@ -165,12 +190,12 @@
                 android:id="@+id/btnShareApk"
                 android:letterSpacing="0.1"
                 app:iconPadding="20dp"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/white"
                 android:textAllCaps="false"
                 app:iconSize="30dp"
-                app:iconTint="@color/white"
+                app:iconTint="@color/red"
                 android:layout_marginStart="15dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="10dp"
                 app:cornerRadius="10dp"/>
@@ -180,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:text="Let's Connect with me-"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -191,7 +216,7 @@
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 app:rippleColor="@color/black"
-                app:cardBackgroundColor="@color/red"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="25dp"
                 app:state_dragged="true">
 
@@ -214,7 +239,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_margin="10dp"
-                            android:backgroundTint="@color/white"
+                            android:backgroundTint="@color/red"
                             android:elevation="10dp"
                             android:layout_gravity="center"
                             android:scaleType="centerCrop"
@@ -228,7 +253,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:elevation="10dp"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/black"/>
                     </LinearLayout>
 
 
@@ -242,7 +267,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:elevation="10dp"
-                            android:backgroundTint="@color/white"
+                            android:backgroundTint="@color/red"
                             android:layout_margin="10dp"
                             android:layout_gravity="center"
                             android:scaleType="centerCrop"
@@ -256,7 +281,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:elevation="10dp"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/black"/>
                     </LinearLayout>
 
 
@@ -271,7 +296,7 @@
                             android:elevation="10dp"
                             android:layout_height="30dp"
                             android:layout_margin="10dp"
-                            android:backgroundTint="@color/white"
+                            android:backgroundTint="@color/red"
                             android:layout_gravity="center"
                             android:scaleType="centerCrop"
                             android:background="@drawable/github_icon"/>
@@ -284,7 +309,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:elevation="10dp"
-                            android:textColor="@color/white"/>
+                            android:textColor="@color/black"/>
                     </LinearLayout>
 
                 </LinearLayout>

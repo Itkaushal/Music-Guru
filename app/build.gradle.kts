@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    implementation("com.github.teamnewpipe:NewPipeExtractor:v0.24.4")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
     // lifecycle and view model
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
