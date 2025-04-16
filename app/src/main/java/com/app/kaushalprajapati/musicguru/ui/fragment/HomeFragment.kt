@@ -83,7 +83,8 @@ class HomeFragment : Fragment() {
 				loadVideos(tab.text.toString())
 			}
 		})
-		tabLayout.elevation = 10.0f
+
+		//tabLayout.elevation = 10.0f
 		tabLayout.getTabAt(0)?.select()
 	}
 

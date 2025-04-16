@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         if (prefsHelper.isLoggedIn(this)) {
             val (savedName, _) = prefsHelper.getUser(this)
 
-            if (savedName != null) {
+           /* if (savedName != null) {
                 Toast.makeText(this, "Welcome, $savedName!", Toast.LENGTH_SHORT).show()
-            }
+            }*/
             loadFragment(HomeFragment())  // Open Home if logged in
         } else {
             loadFragment(LoginFragment()) // Open Login if not logged in
@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()

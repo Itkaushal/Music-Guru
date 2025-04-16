@@ -18,26 +18,6 @@
             android:theme="@style/Base.Theme.MusicGuru"
             app:titleTextColor="@color/white" />
 
-        <!-- <LinearLayout
-             android:layout_width="match_parent"
-             android:orientation="vertical"
-             android:background="@drawable/register_layout_topbackround"
-             android:layout_height="70dp">
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:textSize="22sp"
-                     android:textStyle="bold"
-                     android:padding="10dp"
-                     android:letterSpacing="0.1"
-                     android:layout_marginStart="10dp"
-                     android:text="Music Guru "
-                     android:textColor="@color/white"
-                     android:layout_gravity="center_vertical"
-                     android:gravity="bottom"/>
-         </LinearLayout>-->
-
-
         <!-- Fragment Container -->
         <FrameLayout
             android:id="@+id/frameLayout"
@@ -50,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottom_navigation"
-            android:background="@color/red"
+            android:background="@color/black"
             app:itemRippleColor="@color/white"
             app:labelVisibilityMode="labeled"
             app:elevation="8dp"
@@ -58,12 +38,12 @@
             app:itemPaddingBottom="8dp"
             android:hapticFeedbackEnabled="true"
             app:itemIconSize="30dp"
-            app:itemIconTint="@color/white"
+            app:itemIconTint="@color/red"
             app:compatShadowEnabled="true"
             app:itemTextAppearanceActiveBoldEnabled="true"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_navigation"
-            app:itemTextColor="@color/black"/>
+            app:itemTextColor="@color/white"/>
 
         <!-- Loading Indicator -->
         <include

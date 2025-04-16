@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.app.kaushalprajapati.musicguru.databinding.FragmentLoginBinding
 import com.app.kaushalprajapati.musicguru.ui.activity.MainActivity
@@ -56,6 +58,10 @@ class LoginFragment : Fragment() {
 		binding.googleloginButton?.setOnClickListener {
 			val signInIntent = googleSignInClient.signInIntent
 			startActivityForResult(signInIntent, RC_SIGN_IN)
+		}
+
+		binding.tvGoRegister.setOnClickListener {
+			(activity as MainActivity).loadFragment(RegisterFragment())
 		}
 	}
 
