@@ -192,8 +192,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/tv_userGender"
                             android:layout_width="match_parent"
+                            android:focusedByDefault="false"
+                            android:focusable="false"
                             android:layout_height="wrap_content"
-                            android:hint="Enter Your Gender"
+                            android:hint="Select Your Gender"
                             android:drawableStart="@drawable/gender_icon_input"
                             android:drawablePadding="10dp"
                             android:drawableTint="@color/red"
@@ -204,6 +206,38 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             tools:ignore="TouchTargetSizeCheck" />
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:id="@+id/radiogroup"
+                                android:layout_gravity="center"
+                                android:layout_height="wrap_content">
+                                <com.google.android.material.radiobutton.MaterialRadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Home"
+                                    android:gravity="center"
+                                    android:id="@+id/rbtn_one"
+                                    android:layout_marginEnd="30dp"
+                                    android:layout_gravity="center"
+                                    android:textSize="18sp"
+                                    android:checked="true"
+                                    android:textColor="@color/black"/>
+                                <com.google.android.material.radiobutton.MaterialRadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Work"
+                                    android:id="@+id/rbtn_two"
+                                    android:textSize="18sp"
+                                    android:layout_marginStart="30dp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"/>
+                            </RadioGroup>
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Age text layout and text view -->

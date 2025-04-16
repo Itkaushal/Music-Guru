@@ -186,6 +186,8 @@ class HomeFragment : Fragment() {
 					showError(it.message)
 					Log.e("HomeFragment", "Error searching videos: ${it.message}")
 				}
+
+				else -> {}
 			}
 
 		})

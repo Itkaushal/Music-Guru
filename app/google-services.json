@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "929622037637",
+    "firebase_url": "https://ageless-aleph-401215-default-rtdb.firebaseio.com",
+    "project_id": "ageless-aleph-401215",
+    "storage_bucket": "ageless-aleph-401215.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929622037637:android:a256a00920c388072fc5ec",
+        "android_client_info": {
+          "package_name": "com.app.kaushalprajapati.musicguru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929622037637-6t6lnbqpf0ghlv453lsln6e6t13b8t44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaycwLaJFOZxLggnP1kE3ycBJyqAkCQOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929622037637-6t6lnbqpf0ghlv453lsln6e6t13b8t44.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929622037637:android:3de1f312e32e37b12fc5ec",
+        "android_client_info": {
+          "package_name": "com.example.datasentapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929622037637-19l62e1bk7i0slorpnojlnef3chiplvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.datasentapi",
+            "certificate_hash": "579fefef1089126ef9d0a2e183085dd4b34729ca"
+          }
+        },
+        {
+          "client_id": "929622037637-6t6lnbqpf0ghlv453lsln6e6t13b8t44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaycwLaJFOZxLggnP1kE3ycBJyqAkCQOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929622037637-6t6lnbqpf0ghlv453lsln6e6t13b8t44.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

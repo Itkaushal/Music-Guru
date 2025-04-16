@@ -1,16 +1,10 @@
 package com.app.kaushalprajapati.musicguru.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Rect
-import android.graphics.Typeface
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,19 +15,38 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.app.kaushalprajapati.musicguru.R
 import com.app.kaushalprajapati.musicguru.databinding.FragmentActivitisBinding
-import com.app.kaushalprajapati.musicguru.databinding.FragmentLoginBinding
 import com.app.kaushalprajapati.musicguru.ui.activity.MainActivity
 import com.app.kaushalprajapati.musicguru.ui.fragment.auth.LoginFragment
-import com.app.kaushalprajapati.musicguru.ui.utils.notification.MyNotificationClass
 import com.app.kaushalprajapati.musicguru.ui.utils.sharedprefrences.prefsHelper
-import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
 
 class ActivitisFragment : Fragment() {
-	private lateinit var binding: FragmentActivitisBinding
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentActivitisBinding.inflate(inflater,container,false)!!
 
+	private lateinit var binding: FragmentActivitisBinding
+	private lateinit var googleSignInClient: GoogleSignInClient
+	private var sharedPreferences: SharedPreferences? = null
+	private lateinit var imageView: CircleImageView
+
+	private val SHARED_PREF_NAME = "user_info"
+	private val KEY_NAME = "name"
+	private val KEY_EMAIL = "email"
+	private val KEY_IMAGE = "image"
+
+	private var userName: String? = null
+	private var userEmail: String? = null
+	private var userPhoto: String? = null
+
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+		binding = FragmentActivitisBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -41,71 +54,67 @@ class ActivitisFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		if (prefsHelper.isLoggedIn(requireContext())) {
-			val (savedName, _) = prefsHelper.getUser(requireContext())
-			if (savedName != null) {
-				binding.tvUserInfo.text = savedName.toString()
-			} else {
-				binding.tvUserInfo.text = "null"
+		imageView = binding.imageViewUser as CircleImageView
+
+		sharedPreferences = requireContext().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+		userName = sharedPreferences?.getString(KEY_NAME, null)
+		userEmail = sharedPreferences?.getString(KEY_EMAIL, null)
+		userPhoto = sharedPreferences?.getString(KEY_IMAGE, null)
+
+		if (userName.isNullOrEmpty() || userEmail.isNullOrEmpty() || userPhoto.isNullOrEmpty()) {
+			val intent = requireActivity().intent
+			intent?.let {
+				userName = it.getStringExtra("name")
+				userEmail = it.getStringExtra("email")
+				userPhoto = it.getStringExtra("image")
+				saveUserDetails(userName, userEmail, userPhoto)
 			}
-		} else{
-			Toast.makeText(requireContext(), "you are not logged in?", Toast.LENGTH_SHORT).show()
+		}
+
+		val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+			.requestEmail()
+			.build()
+		googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
+
+		if (prefsHelper.isLoggedIn(requireContext())) {
+			binding.tvUserInfo.text = userName ?: "Unknown"
+		} else {
+			Toast.makeText(requireContext(), "You're not logged in!", Toast.LENGTH_SHORT).show()
 			(activity as MainActivity).loadFragment(LoginFragment())
 		}
 
-		binding.btnLogOut.setOnClickListener{
-			logOutUser()
-			binding.tvUserInfo.text = "null"
-		}
-
-		binding.btnAboutUs.setOnClickListener {
-			 aboutUsDialogOpen()
-		}
-
-		binding.btnAppVersion.setOnClickListener {
-			appVersionDialogOpen()
-		}
-
-		binding.btnSearchHistory.setOnClickListener {
-			// write code here for this .........
-			showSearchHistoryDialog()
-		}
-
-		binding.btnAccountDetails.setOnClickListener {
-			fetchUserDetails()
-		}
-
 		fetchuserImageView()
+		binding.btnLogOut.setOnClickListener { logOutUser() }
+		binding.btnAboutUs.setOnClickListener { aboutUsDialogOpen() }
+		binding.btnAppVersion.setOnClickListener { appVersionDialogOpen() }
+		binding.btnSearchHistory.setOnClickListener { showSearchHistoryDialog() }
+		binding.btnAccountDetails.setOnClickListener { fetchUserDetails() }
+		binding.btnShareApk.setOnClickListener { shareApkwithFriends() }
+		binding.instaButton.setOnClickListener { openUrlinBrowser("https://www.instagram.com/erkaushalprajapati") }
+		binding.facebookButton.setOnClickListener { openUrlinBrowser("https://www.facebook.com/इंजी कौशल प्रजापति मझिगवां") }
+		binding.gitHubButton.setOnClickListener { openUrlinBrowser("https://github.com/Itkaushal") }
+	}
 
-		binding.btnShareApk?.setOnClickListener {
-			shareApkwithFriends()
+	private fun saveUserDetails(username: String?, useremail: String?, userimage: String?) {
+		sharedPreferences?.edit()?.apply {
+			putString(KEY_NAME, username)
+			putString(KEY_EMAIL, useremail)
+			putString(KEY_IMAGE, userimage)
+			apply()
 		}
+	}
 
-		binding.instaButton?.setOnClickListener {
-			Toast.makeText(requireContext(), "redirecting to instagram...", Toast.LENGTH_SHORT)
-				.show()
-			openUrlinBrowser("https://www.instagram.com/erkaushalprajapati")
+	private fun fetchuserImageView() {
+		if (!userPhoto.isNullOrEmpty()) {
+			Picasso.get().load(userPhoto).placeholder(R.drawable.user_icon_input).into(imageView)
+		} else {
+			binding.imageViewUser.setBackgroundResource(R.drawable.user_icon_input)
 		}
-
-		binding.facebookButton?.setOnClickListener {
-			Toast.makeText(requireContext(), "redirecting to facebook...", Toast.LENGTH_SHORT)
-				.show()
-			openUrlinBrowser("https://www.facebook.com/इंजी कौशल प्रजापति मझिगवां ")
-		}
-
-		binding.gitHubButton?.setOnClickListener {
-			Toast.makeText(requireContext(), "redirecting to Github Profile...", Toast.LENGTH_SHORT)
-				.show()
-			openUrlinBrowser("https://github.com/Itkaushal")
-		}
-
 	}
 
 	private fun openUrlinBrowser(url: String) {
 		try {
-			val intent = Intent(Intent.ACTION_VIEW).apply {
-				data = android.net.Uri.parse(url)
-			}
+			val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
 			startActivity(intent)
 		} catch (e: Exception) {
 			Toast.makeText(requireContext(), "Unable to open link: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -116,12 +125,7 @@ class ActivitisFragment : Fragment() {
 		try {
 			val apkInfo = requireContext().applicationContext.applicationInfo
 			val apkFile = File(apkInfo.sourceDir)
-
-			val apkUri = FileProvider.getUriForFile(
-				requireContext(),
-				"${requireContext().packageName}.provider", // defined in Manifest
-				apkFile
-			)
+			val apkUri = FileProvider.getUriForFile(requireContext(), "${requireContext().packageName}.provider", apkFile)
 
 			val shareIntent = Intent(Intent.ACTION_SEND).apply {
 				type = "application/vnd.android.package-archive"
@@ -130,148 +134,66 @@ class ActivitisFragment : Fragment() {
 			}
 
 			startActivity(Intent.createChooser(shareIntent, "Share APK via"))
-		} catch (e : Exception){
-			Toast.makeText(requireContext(), "Apk share failed!:- ${e.message.toString()}", Toast.LENGTH_SHORT).show()
+		} catch (e: Exception) {
+			Toast.makeText(requireContext(), "Apk share failed: ${e.message}", Toast.LENGTH_SHORT).show()
 		}
 	}
-
-	private fun fetchUserDetails() {
-		showuserDetailsDialog()
-	}
-
-	private fun showuserDetailsDialog() {
-		if (prefsHelper.isLoggedIn(requireContext())) {
-			val user_detail = prefsHelper.getAllDetailsOfUser(this.requireContext())
-			if (user_detail != null){
-				val user_detail_text = """
-				Name: ${user_detail.username ?: "N/A"  }
-				Email: ${user_detail.email ?: "N/A"   }
-				Gender: ${user_detail.gender ?: "N/A"  }
-				Age: ${user_detail.age ?: "N/A"  }
-				Password: ${user_detail.password ?: "N/A"  }
-			""".trimIndent()
-
-				// alert dialog
-				AlertDialog.Builder(requireContext())
-					.setTitle("Your Details")
-					.setMessage(user_detail_text)
-					.setPositiveButton("ok") { dialog, _ ->
-						dialog.dismiss()
-					}
-					.create()
-					.show()
-			}else{
-				Toast.makeText(requireContext(), "user not found?", Toast.LENGTH_SHORT).show()
-			}
-		} else{
-			Toast.makeText(requireContext(), "user not logged in!", Toast.LENGTH_SHORT).show()
-		}
-	}
-
-	@SuppressLint("ResourceAsColor")
-	private fun fetchuserImageView() {
-
-		val (savedName) = prefsHelper.getUser(requireContext())
-
-			// No profile image, generate a placeholder with the first letter
-			if (!savedName.isNullOrEmpty()) {
-				val firstLetter = savedName[0].uppercaseChar().toString()
-				val drawable = createCircularPlaceholder(firstLetter)
-				binding.imageViewUser?.setImageDrawable(drawable)
-			}
-	}
-
-	private fun createCircularPlaceholder(text: String): Drawable {
-		val size = 100 // Size in pixels
-		val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-		val canvas = Canvas(bitmap)
-
-		val paint = Paint().apply {
-			color = Color.GRAY
-			isAntiAlias = true
-		}
-		val textPaint = Paint().apply {
-			color = Color.WHITE
-			textSize = 40f
-			typeface = Typeface.DEFAULT_BOLD
-			isAntiAlias = true
-			textAlign = Paint.Align.CENTER
-		}
-
-		// Draw circle background
-		canvas.drawCircle(size / 2f, size / 2f, size / 2f, paint)
-		// Draw text in the center
-		val textBounds = Rect()
-		textPaint.getTextBounds(text, 0, text.length, textBounds)
-		val x = size / 2f
-		val y = size / 2f - textBounds.exactCenterY()
-		canvas.drawText(text, x, y, textPaint)
-
-		return BitmapDrawable(resources, bitmap)
-	}
-
-
 
 	private fun showSearchHistoryDialog() {
-
-		val historyKey = "search_history"
-		val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("MusicGuruPrefs", 0)
-		val searchHistory = sharedPreferences.getStringSet(historyKey, setOf())?.toList() ?: listOf()
+		val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("MusicGuruPrefs", Context.MODE_PRIVATE)
+		val searchHistory = sharedPreferences.getStringSet("search_history", setOf())?.toList() ?: listOf()
 
 		if (searchHistory.isEmpty()) {
 			Toast.makeText(requireContext(), "No search history found!", Toast.LENGTH_SHORT).show()
 			return
 		}
 
-		val builder = AlertDialog.Builder(requireContext())
-		builder.setTitle("Search History")
-		builder.setItems(searchHistory.toTypedArray()) { _, _ -> }
-		builder.setPositiveButton("Clear History") { _, _ -> clearSearchHistory() }
-		builder.setNegativeButton("Close") { dialog, _ -> dialog.dismiss() }
-		builder.setIcon(R.drawable.searchvideo)
-		builder.create().show()
+		val historyMessage = searchHistory.joinToString("\n")
+		AlertDialog.Builder(requireContext())
+			.setTitle("Search History")
+			.setMessage(historyMessage)
+			.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+			.setNegativeButton("Clear") { dialog, _ ->
+				sharedPreferences.edit().remove("search_history").apply()
+				Toast.makeText(requireContext(), "Search history cleared.", Toast.LENGTH_SHORT).show()
+				dialog.dismiss()
+			}
+			.show()
 	}
 
-	private fun clearSearchHistory() {
-		val sharedPreferences: SharedPreferences = requireContext().getSharedPreferences("MusicGuruPrefs", 0)
-		sharedPreferences.edit().remove("search_history").apply()
-		MyNotificationClass().showNotification(requireContext(),"Music Guru","Your Search History cleared successfully...")
-		Toast.makeText(requireContext(), "Search history cleared!", Toast.LENGTH_SHORT).show()
+	private fun fetchUserDetails() {
+		val message = """
+			Name: ${userName ?: "Unknown"}
+			Email: ${userEmail ?: "Unknown"}
+		""".trimIndent()
 
-	}
-
-	private fun appVersionDialogOpen(){
-		val builder = AlertDialog.Builder(requireContext())
-		builder.setTitle("App Version")
-		builder.setMessage("Music Guru and " +
-				"currently running version is 1.0.0")
-		builder.setPositiveButton("Ok") {dialog, _ -> dialog.dismiss()}
-		builder.setIcon(R.drawable.appversion)
-		builder.create().show()
+		AlertDialog.Builder(requireContext())
+			.setTitle("Account Details")
+			.setMessage(message)
+			.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+			.show()
 	}
 
 	private fun aboutUsDialogOpen() {
-		val builder = AlertDialog.Builder(requireContext())
-		builder.setTitle("About This App & us")
-		builder.setMessage(
-			"Music Guru is an advanced music streaming app that provides seamless playback, " +
-					"high-quality video, and personalized recommendations. " +
-			"Its Provide Youtube Music,Video,Movie,Drama,Comedy and so more." +
-			"if you need any help or query ? then contact🌎 email @kaushalprajapati9953@gmail.com "+
-			"and then we will help you."
-		)
-		builder.setPositiveButton("Ok") {dialog, _ -> dialog.dismiss()}
-		builder.setIcon(R.drawable.about_icon)
-		builder.create().show()
-
+		AlertDialog.Builder(requireContext())
+			.setTitle("About Us")
+			.setMessage("MusicGuru is a smart and powerful music discovery app designed by Kaushal Prajapati.")
+			.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+			.show()
 	}
 
-	fun logOutUser(){
-		prefsHelper.setLoggedIn(requireContext(),false)
-		MyNotificationClass().showNotification(requireContext(),"Music Guru","Oh..You Have Logged Out? Please Login to continue...")
-		Toast.makeText(requireContext(), "Log out Successfully!", Toast.LENGTH_SHORT).show()
+	private fun appVersionDialogOpen() {
+		AlertDialog.Builder(requireContext())
+			.setTitle("App Version")
+			.setMessage("Version: 1.0.0")
+			.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+			.show()
+	}
+
+	private fun logOutUser() {
+		prefsHelper.setLoggedIn(requireContext(), false)
+		googleSignInClient.signOut()
+		Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
 		(activity as MainActivity).loadFragment(LoginFragment())
 	}
-
-
 }

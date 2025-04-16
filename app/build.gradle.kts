@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+	alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -41,6 +42,15 @@ android {
 
 dependencies {
 
+    // circle image view dependency
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    // picasso for image loading dependency
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
+    // google sign in dependency
+    implementation ("com.google.android.gms:play-services-auth:21.3.0")
+
     implementation("com.github.teamnewpipe:NewPipeExtractor:v0.24.4")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
@@ -51,9 +61,7 @@ dependencies {
     // networking
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
-    // image loading
-    implementation("io.coil-kt:coil:2.4.0")
+    
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
@@ -76,6 +84,10 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 	implementation(libs.androidx.mediarouter)
+	implementation(libs.firebase.auth)
+	implementation(libs.androidx.credentials)
+	implementation(libs.androidx.credentials.play.services.auth)
+	implementation(libs.googleid)
 	testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
