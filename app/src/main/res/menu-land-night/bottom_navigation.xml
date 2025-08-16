@@ -4,7 +4,7 @@
     <item
         android:id="@+id/nav_home"
         android:title="@string/home_text"
-        android:icon="@drawable/fire_icon"/>
+        android:icon="@drawable/home_icon"/>
 
     <item
         android:id="@+id/nav_shorts"
@@ -14,5 +14,5 @@
     <item
         android:id="@+id/nav_activity"
         android:title="@string/profile_text"
-        android:icon="@drawable/activi_icon"/>
+        android:icon="@drawable/more_icon"/>
 </menu>

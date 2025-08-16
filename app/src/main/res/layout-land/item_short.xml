@@ -14,27 +14,3 @@
 
 </FrameLayout>
 
-
-
-
-    <!--
-    <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:scaleType="fitCenter"
-                    android:background="@drawable/ic_launcher_foreground"
-                    android:id="@+id/ivThumbnail"
-                    android:contentDescription="TODO" />
-
-    </LinearLayout>-->

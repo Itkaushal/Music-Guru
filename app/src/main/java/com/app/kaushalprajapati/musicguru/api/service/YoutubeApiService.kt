@@ -7,12 +7,13 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface YoutubeApiService {
+
     @GET("videos")
     suspend fun getMostPopularVideos(
         @Query("part") part: String = "snippet,statistics,contentDetails",
         @Query("chart") chart: String = "mostPopular",
         @Query("regionCode") region: String = "IN",
-        @Query("maxResults") maxResults: Int = 100,
+        @Query("maxResults") maxResults: Int = 50,
         @Query("key") apiKey: String = "AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"
     ): Response<VideoResponse>
 
@@ -21,7 +22,7 @@ interface YoutubeApiService {
         @Query("q") query: String,
         @Query("part") part: String = "snippet",
         @Query("type") type: String = "video",
-        @Query("maxResults") maxResults: Int = 100,
+        @Query("maxResults") maxResults: Int = 50,
         @Query("key") apiKey: String = "AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"
     ): Response<SearchResponse>
 
@@ -30,7 +31,7 @@ interface YoutubeApiService {
         @Query("part") part: String = "snippet,statistics,contentDetails",
         @Query("chart") chart: String = "mostPopular",
         @Query("regionCode") region: String = "IN",
-        @Query("maxResults") maxResults: Int = 100,
+        @Query("maxResults") maxResults: Int = 50,
         @Query("videoCategoryId") categoryId: String = "17",
         @Query("key") apiKey: String = "AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"
     ): Response<VideoResponse>
@@ -41,7 +42,7 @@ interface YoutubeApiService {
         @Query("part") part: String = "snippet,statistics,contentDetails",
         @Query("chart") chart: String = "mostPopular",
         @Query("regionCode") region: String = "IN",
-        @Query("maxResults") maxResults: Int = 100,
+        @Query("maxResults") maxResults: Int = 50,
         @Query("videoCategoryId") categoryId: String = "10",
         @Query("key") apiKey: String = "AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"
     ): Response<VideoResponse>
@@ -51,7 +52,7 @@ interface YoutubeApiService {
         @Query("part") part: String = "snippet,statistics,contentDetails",
         @Query("chart") chart: String = "mostPopular",
         @Query("regionCode") region: String = "IN",
-        @Query("maxResults") maxResults: Int = 100,
+        @Query("maxResults") maxResults: Int = 50,
         @Query("videoCategoryId") categoryId: String = "25",
         @Query("key") apiKey: String = "AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"
     ): Response<VideoResponse>
@@ -61,7 +62,7 @@ interface YoutubeApiService {
         @Query("part") part: String = "snippet,statistics,contentDetails",
         @Query("chart") chart: String = "mostPopular",
         @Query("regionCode") region: String = "IN",
-        @Query("maxResults") maxResults: Int = 100,
+        @Query("maxResults") maxResults: Int = 50,
         @Query("videoCategoryId") categoryId: String = "28",
         @Query("key") apiKey: String = "AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"
     ): Response<VideoResponse>
@@ -72,7 +73,7 @@ interface YoutubeApiService {
         @Query("part") part: String = "snippet,statistics,contentDetails",
         @Query("chart") chart: String = "mostPopular",
         @Query("regionCode") region: String = "IN",
-        @Query("maxResults") maxResults: Int = 100,
+        @Query("maxResults") maxResults: Int = 50,
         @Query("videoCategoryId") categoryId: String = "24",
         @Query("key") apiKey: String = "AIzaSyDMcCQ-wX32yx9ttnBjf23cDlSE6cYPEb4"
     ): Response<VideoResponse>

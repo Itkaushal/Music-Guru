@@ -33,20 +33,6 @@ class ShortsFragment : Fragment() {
 	private lateinit var videoAdapter: ShortAdapter
 	private lateinit var homeViewModel: HomeViewModel
 
-	/*override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentShortsBinding.inflate(inflater, container, false)
-
-		val repository = VideoRepository(NetworkClient.apiService)
-		homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomeViewModel::class.java]
-
-		videoAdapter = ShortAdapter()
-		binding.recyclerShort.layoutManager = LinearLayoutManager(requireContext())
-		binding.recyclerShort.adapter = videoAdapter
-
-		setupObserver()
-		return binding.root
-	}*/
-
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		binding = FragmentShortsBinding.inflate(inflater, container, false)
 

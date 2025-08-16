@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
 
         if (prefsHelper.isLoggedIn(this)) {
             val (savedName, _) = prefsHelper.getUser(this)
-
            /* if (savedName != null) {
                 Toast.makeText(this, "Welcome, $savedName!", Toast.LENGTH_SHORT).show()
             }*/

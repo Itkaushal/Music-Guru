@@ -15,44 +15,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
-/*
-class ShortAdapter : ListAdapter<VideoItem, ShortAdapter.ViewHolder>(DIFF_CALLBACK) {
-
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-		val binding = ItemShortBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-		return ViewHolder(binding)
-	}
-
-	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-		val item = getItem(position)
-		with(holder.binding) {
-			Glide.with(holder.itemView.context)
-				.load(item.snippet.thumbnails.high.url)
-				.into(ivThumbnail)
-
-			// click event to open VideoPlayerActivity
-			root.setOnClickListener {
-				val context = holder.itemView.context
-				val intent = Intent(context, ShortPlayerActivity::class.java).apply {
-					putExtra("VIDEO_ID", item.id)
-				}
-				context.startActivity(intent)
-			}
-
-		}
-	}
-
-	class ViewHolder(val binding: ItemShortBinding) : RecyclerView.ViewHolder(binding.root)
-	companion object {
-		val DIFF_CALLBACK = object : DiffUtil.ItemCallback<VideoItem>() {
-			override fun areItemsTheSame(oldItem: VideoItem, newItem: VideoItem) = oldItem.id == newItem.id
-			override fun areContentsTheSame(oldItem: VideoItem, newItem: VideoItem) = oldItem == newItem
-		}
-	}
-
-}
-*/
-
 
 class ShortAdapter(
 	private val recyclerView: RecyclerView

@@ -93,6 +93,9 @@ class ActivitisFragment : Fragment() {
 		binding.instaButton.setOnClickListener { openUrlinBrowser("https://www.instagram.com/erkaushalprajapati") }
 		binding.facebookButton.setOnClickListener { openUrlinBrowser("https://www.facebook.com/इंजी कौशल प्रजापति मझिगवां") }
 		binding.gitHubButton.setOnClickListener { openUrlinBrowser("https://github.com/Itkaushal") }
+		binding.moreOptionsBtn.setOnClickListener {
+			Toast.makeText(requireContext(), "coming soon...", Toast.LENGTH_SHORT).show()
+		}
 	}
 
 	private fun saveUserDetails(username: String?, useremail: String?, userimage: String?) {

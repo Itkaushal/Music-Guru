@@ -29,6 +29,7 @@ class ShortPlayerActivity : AppCompatActivity() {
 		youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
 			override fun onReady(youTubePlayer: YouTubePlayer) {
 				youTubePlayer.loadVideo(videoId, 0f)
+				youTubePlayer.cueVideo(videoId,20f)
 				showLoading(false)
 			}
 		})
