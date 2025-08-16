@@ -1,11 +1,13 @@
 package com.app.kaushalprajapati.musicguru.ui.adapter
 
+import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore.Video
+import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +18,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import at.huber.youtubeExtractor.YouTubeUriExtractor
+import at.huber.youtubeExtractor.YtFile
 import com.app.kaushalprajapati.musicguru.R
+import com.app.kaushalprajapati.musicguru.api.service.YoutubeApiService
 import com.app.kaushalprajapati.musicguru.databinding.ItemVideoBinding
 import com.app.kaushalprajapati.musicguru.models.VideoItem
 import com.app.kaushalprajapati.musicguru.ui.activity.VideoPlayerActivity
@@ -25,7 +30,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.schabi.newpipe.extractor.NewPipe
+import org.schabi.newpipe.extractor.ServiceList
+import org.schabi.newpipe.extractor.services.youtube.YoutubeService
 
+@Suppress("DEPRECATION")
 class VideoAdapter(
 ) : ListAdapter<VideoItem, VideoAdapter.ViewHolder>(DIFF_CALLBACK) {
 
@@ -39,21 +48,23 @@ class VideoAdapter(
         with(holder.binding) {
             tvTitle.text = item.snippet.title ?: "No Title"
             tvChannel.text = item.snippet.channelTitle ?: "Unknown Channel"
-            tvViews.text = formatViews(item.statistics.viewCount ?:" No View Found")
+            tvViews.text = formatViews(item.statistics.viewCount ?: " No View Found")
             tvDuration.text = formatDuration(item.contentDetails.duration)
+            tvlikeCount.text = formatLikes(item.statistics.likeCount ?: "No like found")
 
             Glide.with(holder.itemView.context)
                 .load(item.snippet.thumbnails.high.url)
                 .into(ivThumbnail)
 
             //click event to open VideoPlayerActivity
-            root.setOnClickListener {
+            ivThumbnail.setOnClickListener {
                 val context = holder.itemView.context
                 val intent = Intent(context, VideoPlayerActivity::class.java).apply {
                     putExtra("VIDEO_ID", item.id)
                 }
                 context.startActivity(intent)
             }
+
 
         }
     }
@@ -79,6 +90,20 @@ class VideoAdapter(
                 "N/A views"
             }
         }
+
+        private fun formatLikes(view: String?): String {
+            return try {
+                val likeCount = view?.toLongOrNull() ?: return "N/A like"
+                when {
+                    likeCount >= 1_000_000 -> "${likeCount / 1_000_000}M like"
+                    likeCount >= 1_000 -> "${likeCount / 1_000}K like"
+                    else -> "$likeCount like"
+                }
+            } catch (e: Exception) {
+                "N/A likes"
+            }
+        }
+
 
         private fun formatDuration(duration: String?): String {
             if (duration.isNullOrEmpty()) return "00:00"

@@ -56,7 +56,10 @@ data class SearchSnippet(
     val channelTitle: String,
     val channelId: String,
     val publishedAt: String,
-    val thumbnails: Thumbnails
+    val thumbnails: Thumbnails,
+    val viewCount: String,
+    val duration: String,
+    val likeCount: String
 )
 
 

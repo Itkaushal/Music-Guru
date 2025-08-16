@@ -38,6 +38,7 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -51,7 +52,6 @@ dependencies {
     // google sign in dependency
     implementation ("com.google.android.gms:play-services-auth:21.3.0")
 
-    implementation("com.github.teamnewpipe:NewPipeExtractor:v0.24.4")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     // lifecycle and view model

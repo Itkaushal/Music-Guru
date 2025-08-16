@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp">
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -48,27 +47,53 @@
                         android:maxLines="2"
                         android:text="Video tile here"/>
 
-                <TextView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:letterSpacing="0.1"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/red"
-                    android:text="Channel Name"
-                    android:id="@+id/tvChannel"/>
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:letterSpacing="0.1"
+                        android:textSize="14sp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"
+                        android:text="Channel Name"
+                        android:id="@+id/tvChannel"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:letterSpacing="0.1"
+                        android:textSize="14sp"
+                        android:drawableStart="@drawable/likecount_icon"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:drawableTint="@color/black"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"
+                        android:text="like count"
+                        android:id="@+id/tvlikeCount"/>
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:weightSum="2"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tvViews"
                         android:textStyle="bold"
+                        android:layout_weight="0.5"
                         android:textSize="12sp"
                         android:text="1.2m views"/>
 
@@ -78,12 +103,29 @@
                         android:textSize="12sp"
                         android:layout_marginStart="8dp"
                         android:text="10:30"
+                        android:layout_weight="0.5"
                         android:letterSpacing="0.1"
                         android:textStyle="bold"
                         android:id="@+id/tvDuration"/>
-
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTint="@color/black"
+                        android:textStyle="bold"
+                        android:id="@+id/tvAudioPlay"
+                        android:drawableStart="@drawable/audioplay_icon"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:letterSpacing="0.1"
+                        android:textColor="@color/red"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="40dp"
+                        android:text="listen to music"/>
                 </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
